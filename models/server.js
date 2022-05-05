@@ -24,12 +24,14 @@ class Server {
     }
 
     middlewares(){
-        //directorio publico
-        this.app.use(express.static('public'));
-
         //cors
         this.app.use(cors());
-
+        
+        //Lectura y parseo del body
+        this.app.use(express.json());
+        
+        //directorio publico
+        this.app.use(express.static('public'));
     }
 
     routes() {
