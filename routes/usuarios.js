@@ -18,7 +18,9 @@ const router = Router();
 
 
 router.get('/', usuariosGet );
+
 router.put('/:id', usuariosPut );
+
 router.post('/',[
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
         check('password', 'El password es obligatorio y debe ser mas de 6 letras').isLength({min: 6}),
@@ -28,7 +30,9 @@ router.post('/',[
         check('rol').custom( esRolValido ),
         validarCampos
 ], usuariosPost );
+
 router.patch('/', usuariosPatch );
+
 router.delete('/', usuariosDelete );
 
 
