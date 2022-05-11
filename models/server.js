@@ -3,62 +3,58 @@
 // permite proteger el servidor de manera superficial
 // comando use es un middleware
 
-
 const express = require('express');
 const cors = require('cors');
-const { dbConnection } = require('../database/config');
 
+const { dbConnection } = require('../database/config');
 
 class Server {
 
-    constructor(){
-        this.app = express();
+    constructor() {
+        this.app  = express();
         this.port = process.env.PORT;
         this.usuariosPath = '/api/usuarios';
 
-
-        //conectar a la base de datos
+        // Conectar a base de datos
         this.conectarDB();
 
-        //Middlewares
+        // Middlewares
         this.middlewares();
 
-
-        //Rutas de mi app
+        // Rutas de mi aplicación
         this.routes();
     }
 
-
-    async conectarDB(){
+    async conectarDB() {
         await dbConnection();
     }
 
-    middlewares(){
-        //cors
-        this.app.use(cors());
-        
-        //Lectura y parseo del body
-        this.app.use(express.json());
-        
-        //directorio publico
-        this.app.use(express.static('public'));
+
+    middlewares() {
+
+        // CORS
+        this.app.use( cors() );
+
+        // Lectura y parseo del body
+        this.app.use( express.json() );
+
+        // Directorio Público
+        this.app.use( express.static('public') );
+
     }
 
     routes() {
-        this.app.use(this.usuariosPath, require('../routes/usuarios'));
+        this.app.use( this.usuariosPath, require('../routes/usuarios'));
     }
 
-
-
     listen() {
-        this.app.listen(this.port, () => {
-            console.log('Servidor corriendo en puerto: ', this.port);
+        this.app.listen( this.port, () => {
+            console.log('Servidor corriendo en puerto', this.port );
         });
     }
 
-
-
 }
+
 
 
 
