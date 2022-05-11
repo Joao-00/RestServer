@@ -65,10 +65,7 @@ const usuariosPut = async(req, res = response) => {
         const usuario = await Usuario.findByIdAndUpdate(id, resto);
 
 
-    res.json({
-        msg: 'put API - controlador',
-        usuario
-    });
+    res.json(usuario);
 }
 
 const usuariosPatch = (req, res = response) => {
