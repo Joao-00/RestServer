@@ -33,10 +33,12 @@ const login = (req, res = response) => {
         }
 
         //TODO: generar el JWT
+        const token = await generarJWT(usuario.id);
 
 
         res.json({
-            msg: 'Login ok',
+            usuario,
+            token
         });
 
     } catch (error) {
