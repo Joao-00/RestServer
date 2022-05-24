@@ -6,6 +6,7 @@ const dbConnection = async() => {
 
     try {
 
+        //contenido sin soporte
         await mongoose.connect( process.env.MONGODB_CNN, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -16,6 +17,7 @@ const dbConnection = async() => {
         // no tiene soporte     
         //     useCreateIndex: true,
         //     useFindAndModify: false
+        
     
         console.log('Base de datos online');
 
