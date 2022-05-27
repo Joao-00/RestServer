@@ -65,4 +65,6 @@ const crearCategoria = (req, res = response) => {
 
 module.exports = {
     crearCategoria,
+    obtenerCategoria,
+    obtenerCategorias,
 }
