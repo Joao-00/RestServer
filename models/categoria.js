@@ -21,5 +21,4 @@ const CategoriaSchema = Schema({
 
 
 
-
 module.exports = model( 'Categoria', CategoriaSchema );

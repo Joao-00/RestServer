@@ -1,30 +1,38 @@
-const { Router } = require('express');
-const { check } = require('express-validator');
-
-const { validarJWT, validarCampos, esAdminRole } = require('../middlewares');
+const {response} = require('express');
+const {Categoria} = require('../models');
 
 
-const router = Router();
+const crearCategoria = (req, res = response) => {
 
-/**
- * {{url}}/api/categorias
- */
+    const nombre = req.body.nombre.toUpperCase();
 
-//  Obtener todas las categorias - publico
-router.get('/', );
+    const categoriaDB = await Categoria.findOne({nombre});
 
-// Obtener una categoria por id - publico
-router.get('/', );
+    if (categoriaDB) {
+        return res.status(400).json({
+            msg:`La categoria ${categoriaDB.nombre}, ya existe`
+        });
+    }
 
-// Crear categoria - privado - cualquier persona con un token válido
-router.get('/', );
+    //generar la data a guardar
+    const data = {
+        nombre,
+        usuario: req.usuario._id
+    }
 
-// Actualizar - privado - cualquiera con token válido
-router.get('/', );
+    const categoria = new Categoria( data );
 
-// Borrar una categoria - Admin
-router.get('/', );
+    // Guardar DB
+    await categoria.save();
+
+    res.status(201).json(categoria);
+
+}
 
 
 
-module.exports = router;
+
+
+module.exports = {
+    crearCategoria,
+}
