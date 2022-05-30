@@ -8,7 +8,7 @@ const { validarCampos } = require('../middlewares');
 const router = Router();
 
 
-
+router.post( '/', );
 
 
 
