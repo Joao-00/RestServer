@@ -4,6 +4,7 @@ const fs   = require('fs');
 const { response } = require('express');
 
 const { Usuario, Producto } = require('../models');
+const { subirArchivo } = require('../helpers/subir-archivo');
 
 
 const cargarArchivo = async(req, res = response) => {
