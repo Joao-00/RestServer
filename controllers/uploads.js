@@ -21,3 +21,7 @@ const cargarArchivo = async(req, res = response) => {
     }
 
 }
+
+module.exports = {
+    cargarArchivo,
+}
