@@ -4,13 +4,14 @@ const { cargarArchivo, actualizarImagen } = require('../controllers/uploads');
 const { coleccionesPermitidas } = require('../helpers/db-validators');
 
 const { validarCampos } = require('../middlewares');
+const { validarArchivoSubir } = require('../middlewares/validar-archivo');
 
 
 
 const router = Router();
 
 
-router.post( '/', cargarArchivo);
+router.post( '/', validarArchivoSubir, cargarArchivo);
 
 router.put('/:coleccion/:id', [
     validarArchivoSubir,
