@@ -18,7 +18,8 @@ router.put('/:coleccion/:id', [
     check('id','El id debe de ser de mongo').isMongoId(),
     check('coleccion').custom( c => coleccionesPermitidas( c, ['usuarios','productos'] ) ),
     validarCampos
- ], actualizarImagen )
+ ], actualizarImagenCloudinary )
+ //], actualizarImagen )
 
  router.get('/:coleccion/:id', [
     check('id','El id debe de ser de mongo').isMongoId(),
